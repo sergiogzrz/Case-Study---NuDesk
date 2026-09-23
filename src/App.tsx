@@ -330,7 +330,31 @@ export default function App() {
           />
         </section>
 
-        {/* 2. Interactive Analytics Dashboard (Bar Chart & Line Chart) */}
+        {/* 2. Operational Core (Top): Order Registration Form + Gemini AI Assistant Panel */}
+        <section ref={formRef} aria-label="Registro de Venta y Asistente IA">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            {/* Order Registration Form */}
+            <div className="lg:col-span-6 space-y-4">
+              <OrderForm
+                onSubmitOrder={handleRegisterOrder}
+                isAnalyzing={isAnalyzing}
+              />
+            </div>
+
+            {/* Gemini AI Assistant Panel */}
+            <div ref={geminiPanelRef} className="lg:col-span-6 space-y-4">
+              <GeminiPanel
+                analysis={activeAnalysis}
+                activeOrder={activeOrder}
+                isLoading={isAnalyzing}
+                onReanalyze={handleReanalyzeOrder}
+                errorMessage={geminiError}
+              />
+            </div>
+          </div>
+        </section>
+
+        {/* 3. Interactive Analytics Dashboard (Bar Chart & Line Chart) - Moved below Operational Core */}
         <section aria-label="Gráficos Interactivos de Ventas">
           <AnalyticsCharts
             orders={orders}
@@ -343,30 +367,6 @@ export default function App() {
             activeFilter={chartFilter}
           />
         </section>
-
-        {/* 3. Operational Split: Order Registration Form + Gemini AI Assistant Panel */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-          
-          {/* Order Registration Form */}
-          <div ref={formRef} className="lg:col-span-6 space-y-4">
-            <OrderForm
-              onSubmitOrder={handleRegisterOrder}
-              isAnalyzing={isAnalyzing}
-            />
-          </div>
-
-          {/* Gemini AI Assistant Panel */}
-          <div ref={geminiPanelRef} className="lg:col-span-6 space-y-4">
-            <GeminiPanel
-              analysis={activeAnalysis}
-              activeOrder={activeOrder}
-              isLoading={isAnalyzing}
-              onReanalyze={handleReanalyzeOrder}
-              errorMessage={geminiError}
-            />
-          </div>
-
-        </div>
 
         {/* 4. Transactions Data Table */}
         <section ref={tableRef} aria-label="Tabla de Transacciones">
