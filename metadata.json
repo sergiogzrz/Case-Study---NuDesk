@@ -1,0 +1,6 @@
+{
+  "name": "SHNACKS - AI Sales & Operations Dashboard",
+  "description": "Panel interactivo de analítica de ventas y operaciones para la marca de repostería saludable SHNACKS con asistente Gemini AI.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
